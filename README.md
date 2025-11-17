@@ -1,3 +1,5 @@
+Blog -----
+
 ১. ট্যাপেস্ক্রিপ্ট এ ইন্টারফেসেস ও টাইপস এর মধ্যে পার্থক্য আলোচনা করো ।
 
 => 
@@ -24,5 +26,14 @@ type Student = {
      phoneNo: number;
 };
 
-type Student1 = keyof Student;
+function isStudent ( obj: Student, key: keyof Student){
+console.log(obj[key]);
+}
+
+isStudent ({ name: "Aysha", id: 123, address: "Sylhet", age: 20, phoneNo: 0177777 }, "name"); // কাজ করবে 
+isStudent ({ name: "Aysha", id: 123, address: "Sylhet", age: 20, phoneNo: 0177777 }, "email"); // কাজ করবেনা কারণ এখানে email টি Student অবজেক্ট এর মধ্যে নাই। 
+
+console.log("Aysha");
+
+
 
