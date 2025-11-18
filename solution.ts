@@ -40,22 +40,21 @@ type Item = {
 }
 function filterByRating(items: Item[]): Item[] {
 
-  const validItems = items
-    .filter(item => item.rating >= 4 && item.rating <= 5)
+    const validItemsByRating = items
+    .filter(item => item.rating >= 4.0 && item.rating <= 5.0)
     .map(item => ({
-      title: item.title,
-      rating: Number(item.rating.toFixed(1)),
-    }));
+        title: item.title,
+        rating: Number(item.rating.toFixed(1)),
+}));
 
-  console.log("Valid Items:", validItems);  
-
-  const invalidItemByRating = items.find(item => item.rating > 5);
-  if (invalidItemByRating) {
-    throw new Error(`Rating cannot be over 5.0 (found ${invalidItemByRating.rating})`);
-  }
-  return validItems;
-}
-
+    console.log("Valid Items:", validItemsByRating);
+    
+    if (items.find(item => item.rating > 5.0)) {
+        throw new Error ("Rating cannot be over 5.0");
+    } else {
+        return validItemsByRating;
+    }
+ }
 
 
 type User = {
